@@ -6,13 +6,8 @@ import { HeaderComponent } from './header/header.component';
   selector: 'app-root',
   template: `
   <app-header></app-header>
-  <h1>
-    {{title}}
-  </h1>
   <router-outlet></router-outlet>
   `,
   styles: []
 })
-export class AppComponent {
-  title = 'app works!';
-}
+export class AppComponent {}
