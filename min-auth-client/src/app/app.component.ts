@@ -6,7 +6,9 @@ import { HeaderComponent } from './header/header.component';
   selector: 'app-root',
   template: `
   <app-header></app-header>
-  <router-outlet></router-outlet>
+  <div style="padding-top: 0.5em">
+    <router-outlet></router-outlet>
+  </div>
   `,
   styles: []
 })
