@@ -5,10 +5,20 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { LandingComponent } from './landing/landing.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { ProfileComponent } from './profile/profile.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LandingComponent,
+    SignUpComponent,
+    SignInComponent,
+    ProfileComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
