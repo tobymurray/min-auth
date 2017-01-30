@@ -1,15 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent {
 
-  constructor() { }
+  private form: FormGroup;
 
-  ngOnInit() {
+  constructor(private formBuilder: FormBuilder) {
+    this.form = formBuilder.group({
+      "username": ["", Validators.required],
+      "email": ["", Validators.required],
+      "passwords": formBuilder.group({
+        password: ["", Validators.required],
+        repeatPassword: ["", Validators.required]
+      }, { validator: this.passwordMatchValidator })
+    });
+  }
+
+  onSignUp() {
+    console.log(this.form);
+  }
+
+  passwordMatchValidator(group: FormGroup) {
+    return group.get('password').value === group.get('repeatPassword').value
+      ? null : { 'mismatch': true };
   }
 
 }

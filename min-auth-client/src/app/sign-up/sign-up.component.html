@@ -1,7 +1,9 @@
-<form>
-  <input type="text" placeholder="Username"><br>
-  <input type="text" placeholder="Email address"><br>
-  <input type="password" placeholder="Password"><br>
-  <input type="password" placeholder="Confirm Password"><br>
-  <button type="submit">Sign Up</button><br>
+<form [formGroup]="form" (ngSubmit)="onSignUp()">
+  <input type="text" placeholder="Username" formControlName="username"><br>
+  <input type="text" placeholder="Email address" formControlName="email"><br>
+  <div formGroupName="passwords">
+    <input type="password" placeholder="Password" formControlName="password"><br>
+    <input type="password" placeholder="Confirm Password" formControlName="repeatPassword"><br>
+  </div>
+  <button type="submit" [disabled]="!form.valid">Sign Up</button><br>
 </form>
