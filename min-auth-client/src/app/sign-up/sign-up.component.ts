@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { UserService } from './../shared/user/user.service';
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -10,7 +12,7 @@ export class SignUpComponent {
 
   private form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private userService: UserService) {
     this.form = formBuilder.group({
       "username": ["", Validators.required],
       "email": ["", Validators.required],
