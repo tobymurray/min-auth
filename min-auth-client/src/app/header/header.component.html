@@ -1,6 +1,7 @@
 <nav>
   <a [routerLink]="['/']">Home</a>
   <a [routerLink]="['/profile']">Profile</a>
-  <a [routerLink]="['/sign-in']">Sign In</a>
-  <a [routerLink]="['/sign-up']">Sign Up</a>
+  <a *ngIf="!isSignedIn()" [routerLink]="['/sign-in']">Sign In</a>
+  <a *ngIf="!isSignedIn()" [routerLink]="['/sign-up']">Sign Up</a>
+  <button *ngIf="isSignedIn()" (click)="signOut()" style="float: right;">Sign Out</button>
 </nav>
