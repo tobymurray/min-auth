@@ -3,11 +3,10 @@ module.exports = function (knex) {
     logVersion: function () {
       knex.raw('SELECT version()').then(function (resp) {
         dbServer = resp.rows[0].version
-        return dbServer;
+        console.log(dbServer);
       }).catch(function (error) {
         console.log("Connection to database failed");
         console.error(error);
-        return error;
       });
     }
   }
