@@ -11,6 +11,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HeaderComponent } from './header/header.component';
 import { UserService } from './shared/user/user.service';
+import { AuthenticatedGuard } from './shared/authenticated.guard';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { UserService } from './shared/user/user.service';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [UserService],
+  providers: [UserService, AuthenticatedGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
