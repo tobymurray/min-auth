@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 import { UserService } from './../shared/user/user.service';
@@ -9,7 +10,7 @@ import { UserService } from './../shared/user/user.service';
 })
 export class HeaderComponent {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   isSignedIn() {
     return this.userService.isSignedIn();
@@ -17,6 +18,7 @@ export class HeaderComponent {
 
   signOut() {
     this.userService.signOut();
+    this.router.navigateByUrl("/");
   }
 
 }
