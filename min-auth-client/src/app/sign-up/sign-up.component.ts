@@ -24,7 +24,8 @@ export class SignUpComponent {
   }
 
   onSignUp() {
-    console.log(this.form);
+    let formContents = this.form.value;
+    this.userService.create(formContents.username, formContents.email, formContents.passwords.password)
   }
 
   passwordMatchValidator(group: FormGroup) {

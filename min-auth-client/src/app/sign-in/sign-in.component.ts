@@ -19,8 +19,9 @@ export class SignInComponent {
     });
   }
 
-  onSignIn(email, password) {
-    console.log(this.form);
+  onSignIn() {
+    let formContents = this.form.value;
+    this.userService.signIn(formContents.email, formContents.password);
   }
 
 }
