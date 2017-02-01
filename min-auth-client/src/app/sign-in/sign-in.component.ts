@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Component } from '@angular/core';
 
@@ -12,7 +13,7 @@ export class SignInComponent {
 
   private form: FormGroup;
 
-   constructor(private formBuilder: FormBuilder, private userService: UserService) {
+   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
     this.form = formBuilder.group({
       "email": ["", Validators.required],
       "password": ["", Validators.required]
@@ -22,6 +23,7 @@ export class SignInComponent {
   onSignIn() {
     let formContents = this.form.value;
     this.userService.signIn(formContents.email, formContents.password);
+    this.router.navigateByUrl("/profile");
   }
 
 }
