@@ -6,11 +6,11 @@
   "author": "Toby Murray <murray.toby@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start-server": "cd min-auth-server && nodemon",
-    "start-client": "cd min-auth-client && ng serve --watch",
-    "build-client": "cd min-auth-client && ng build --prod --aot",
-    "deploy-client": "node build.js",
-    "build": "yarn build-client && yarn deploy-client"
+    "start-server": "cd min-auth-server && yarn && nodemon",
+    "start-client": "cd min-auth-client && yarn && ng serve --watch",
+    "build-client": "cd min-auth-client && yarn && ng build --prod --aot && cd ..",
+    "deploy-client": "yarn && node build.js",
+    "build": "yarn build-client && yarn deploy-client && cd .."
   },
   "devDependencies": {
     "fs-extra": "^1.0.0"
