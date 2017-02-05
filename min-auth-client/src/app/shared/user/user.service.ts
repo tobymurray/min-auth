@@ -1,9 +1,13 @@
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class UserService {
 
+  private HEADERS = new Headers({ 'Content-Type': 'application/json' });
   private authToken = 'auth_token';
   private signedIn: boolean = false;
 
@@ -12,23 +16,43 @@ export class UserService {
   }
 
   signIn(email: string, password: string) {
-    // This would be where we call out to the server to authenticate
-    // We'll use 'token' as a placeholder for now
-    localStorage.setItem(this.authToken, 'token');
-    this.signedIn = true;
+    this.http.post('/api/users/sign-in', { username: email, password: password }, { headers: this.HEADERS })
+      .map(response => response.json())
+      .subscribe(
+      next => this._signUserIn(next),
+      error => console.error(error),
+    );
   }
 
   create(username: string, email: string, password: string) {
-    // Obviously this is not what this function will ultimately do
-    this.signIn(email, password);
+    this.http.post('/api/users/sign-up', { username: username, email: email, password: password }, { headers: this.HEADERS })
+      .map(response => response.json())
+      .subscribe(
+      next => this.signIn(email, password),
+      error => console.error(error),
+    );
   }
 
   signOut() {
-    localStorage.removeItem(this.authToken);
-    this.signedIn = false;
+    this.http.post('/api/users/sign-out', {}, { headers: this.HEADERS })
+      .map(response => response.json())
+      .subscribe(
+      next => this._signUserOut(next),
+      error => console.error(error),
+    );
   }
 
   isSignedIn() {
     return this.signedIn;
+  }
+
+  _signUserIn(response) {
+    localStorage.setItem(this.authToken, 'token');
+    this.signedIn = true;
+  }
+
+  _signUserOut(resposne) {
+    localStorage.removeItem(this.authToken);
+    this.signedIn = false;
   }
 }
