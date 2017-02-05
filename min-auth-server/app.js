@@ -11,8 +11,6 @@ global.knex = require.main.require("../config/db")
 const knexUtils = require.main.require("../utils/knexUtils")(knex);
 knexUtils.logVersion();
 
-const userRoutes = require('./routes/users');
-
 var app = express();
 
 // view engine setup
@@ -26,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(userRoutes);
+app.use('/api', require.main.require("../users/router")(express.Router(), knex));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
