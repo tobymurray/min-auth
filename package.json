@@ -13,6 +13,6 @@
     "build": "yarn build-client && yarn deploy-client && cd .."
   },
   "devDependencies": {
-    "fs-extra": "^1.0.0"
+    "fs-extra": "^2.0.0"
   }
 }
