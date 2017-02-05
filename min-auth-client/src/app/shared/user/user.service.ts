@@ -15,8 +15,8 @@ export class UserService {
     this.signedIn = !!localStorage.getItem(this.authToken);
   }
 
-  signIn(email: string, password: string) {
-    this.http.post('/api/users/sign-in', { username: email, password: password }, { headers: this.HEADERS })
+  signIn(username: string, password: string) {
+    this.http.post('/api/users/sign-in', { username: username, password: password }, { headers: this.HEADERS })
       .map(response => response.json())
       .subscribe(
       next => this._signUserIn(next),

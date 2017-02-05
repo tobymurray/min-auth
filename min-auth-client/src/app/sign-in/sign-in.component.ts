@@ -15,14 +15,14 @@ export class SignInComponent {
 
    constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
     this.form = formBuilder.group({
-      "email": ["", Validators.required],
+      "username": ["", Validators.required],
       "password": ["", Validators.required]
     });
   }
 
   onSignIn() {
     let formContents = this.form.value;
-    this.userService.signIn(formContents.email, formContents.password);
+    this.userService.signIn(formContents.username, formContents.password);
     this.router.navigateByUrl("/profile");
   }
 
