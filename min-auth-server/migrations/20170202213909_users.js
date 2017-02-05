@@ -4,7 +4,6 @@ exports.up = (knex, Promise) => {
     table.specificType('user_name', 'citext').unique().notNullable();
     table.specificType('user_email', 'citext').notNullable();
     table.string('password').notNullable();
-    table.string('password_salt').notNullable();
     table.timestamps();
   });
 };
