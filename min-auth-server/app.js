@@ -7,7 +7,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-const knex = require.main.require("../config/db")
+global.knex = require.main.require("../config/db")
 const knexUtils = require.main.require("../utils/knexUtils")(knex);
 knexUtils.logVersion();
 
