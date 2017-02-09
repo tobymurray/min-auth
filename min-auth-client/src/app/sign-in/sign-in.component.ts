@@ -13,7 +13,7 @@ export class SignInComponent {
 
   private form: FormGroup;
 
-   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
     this.form = formBuilder.group({
       "username": ["", Validators.required],
       "password": ["", Validators.required]
