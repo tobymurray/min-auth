@@ -10,7 +10,8 @@
     "start-client": "cd min-auth-client && yarn && ng serve --watch",
     "build-client": "cd min-auth-client && yarn && ng build --prod --aot && cd ..",
     "deploy-client": "yarn && node build.js",
-    "build": "yarn build-client && yarn deploy-client && cd .."
+    "build": "yarn build-client && yarn deploy-client && cd ..",
+    "test": "yarn build"
   },
   "devDependencies": {
     "fs-extra": "^2.0.0"
